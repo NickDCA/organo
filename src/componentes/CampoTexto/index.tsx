@@ -1,5 +1,3 @@
-import React from 'react'
-
 import './CampoTexto.css'
 
 interface CampoTextoProps {
@@ -8,9 +6,10 @@ interface CampoTextoProps {
     label: string
     valor: string
     obrigatorio?: boolean
+    tipo?: 'text' | 'password' | 'date' | 'email' | 'number'
 }
 
-const CampoTexto = ({ aoAlterado, label, obrigatorio, placeholder, valor } : CampoTextoProps) => {
+const CampoTexto = ({ aoAlterado, label, placeholder, valor, obrigatorio = false, tipo = 'text' } : CampoTextoProps) => {
 
     const placeholderModificada = `${placeholder}...` 
 
@@ -28,6 +27,7 @@ const CampoTexto = ({ aoAlterado, label, obrigatorio, placeholder, valor } : Cam
                 onChange={aoDigitado} 
                 required={obrigatorio} 
                 placeholder={placeholderModificada}
+                type={tipo}
             />
         </div>
     )
